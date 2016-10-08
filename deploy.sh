@@ -147,14 +147,15 @@ mkdir ~/.vim/syntax
 mv -f ~/.vim/configuration/syntax/* ~/.vim/syntax/
 mv -f ~/.vim/configuration/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py
 
+export PATH=$HOME/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/lib/:$LD_LIBRARY_PATH
+
 # install cmake
 if [ -z "$(command -v cmake)" ]; then
 	echo "Installing CMake"
 	cd ~/Downloads
 	rm -rf cmake*
 	wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
-	export PATH=$HOME/bin:$PATH
-	export LD_LIBRARY_PATH=$HOME/lib/:$LD_LIBRARY_PATH
 	tar -xf cmake*.tar.gz
 	cd cmake*
 	./configure --prefix=$HOME
