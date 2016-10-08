@@ -55,7 +55,7 @@ plugins=(zsh-autosuggestions)
 
 # User configuration
 
-export PATH="/Users/rijn/stlink.git:/Users/rijn/gcc-arm-none-eabi/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+#export PATH="/Users/rijn/stlink.git:/Users/rijn/gcc-arm-none-eabi/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

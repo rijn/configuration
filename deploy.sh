@@ -92,7 +92,7 @@ rm -rf ~/.vim/configuration
 git clone https://github.com/rijn/configuration ~/.vim/configuration
 
 # install dependencies
-deps=( "zsh" "toilet" "vim" "libpng" "cmake" "curl" "wget" )
+deps=( "zsh" "toilet" "vim" "libpng" "cmake" "curl" "wget" "python" )
 
 if [ "${OS}" == "mac" ]; then
 	if [ -z "$(command -v brew)" ]; then
@@ -177,12 +177,12 @@ else
 	fi
 fi
 
-# install oh my zsh
-if [ -n "$(command -v curl)" ]; then
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-elif [ -n "$(command -v wget)" ]; then
-	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-fi
+# install fonts
+echo "Installing fonts"
+mkdir -p /usr/share/fonts
+mv -f ~/.vim/configuration/Monaco_Linux-Powerline.ttf /usr/share/fonts/Monaco_Linux-Powerline.ttf
+mv -f ~/.vim/configuration/InputMono-Regular.ttf /usr/share/fonts/InputMono-Regular.ttf
+fc-cache -fv
 
 # move zshrc
 if [ -f ~/.zshrc ]; then
@@ -194,6 +194,11 @@ mv -f ~/.vim/configuration/bullet-train.zsh-theme ~/.oh-my-zsh/themes/bullet-tra
 mkdir ~/.zsh
 mv -f ~/.vim/configuration/alias ~/.zsh/alias
 
-zsh
+# install oh my zsh
+if [ -n "$(command -v curl)" ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+elif [ -n "$(command -v wget)" ]; then
+	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+fi
 
 printf '\e[1;34m%-6s\e[m\n' "Done"
