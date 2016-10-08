@@ -83,7 +83,11 @@ echo "KERNEL: $KERNEL"
 echo "MACH: $MACH"
 echo "========"
 
-deps=( "zsh" "toilet" "vim" "libpng" )
+echo "Fetching configuration"
+rm -rf ~/.vim/configuration
+git clone https://github.com/rijn/configuration ~/.vim/configuration
+
+deps=( "zsh" "toilet" "vim" "libpng" "cmake" "curl" "wget" )
 
 if [ "${OS}" == "mac" ]; then
 	if [ -z "$(command -v brew)" ]; then
@@ -105,7 +109,20 @@ if [ "${OS}" == "mac" ]; then
 
 	# ask for permission
 	# [ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
+elif [ "${OS}" == "linux" ]; then
+	if [ "$UID" -eq 0 ]; then
+		if [ -n "$(command -v yum)" ]; then
+			PM=yum
+		elif [ -n "$(command -v apt-get)" ]; then
+			PM=apt-get
+		fi
+		echo "Find PM $(PM)"
+	else
+		printf '\e[1;31m%-6s\e[m\n' "Please run script in root, skip installation"
+	fi
 fi
+
+
 
 if [ -d ~/.vim/bundle/Vundle.vim ]; then
 	echo "Vundle installed"
@@ -114,9 +131,6 @@ else
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
-echo "Fetching configuration"
-rm -rf ~/.vim/configuration
-git clone https://github.com/rijn/configuration ~/.vim/configuration
 if [ -f ~/.vimrc ]; then
 	mv ~/.vimrc ~/.vimrc.bak
 fi
@@ -128,7 +142,38 @@ mv -f ~/.vim/configuration/.vimrc ~/.vimrc
 mv -f ~/.vim/configuration/syntax ~/.vim/syntax
 mv -f ~/.vim/configuration/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py
 
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --clang-completer
+if [ -z "$(command -v cmake)" ]; then
+	echo "Installing CMake"
+	cd ~/Downloads
+	wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
+	export PATH=$HOME/bin:$PATH
+	export LD_LIBRARY_PATH=$HOME/lib/:$LD_LIBRARY_PATH
+	tar -xf cmake*.tar.gz
+	cd cmake*
+	./configure --prefix=$HOME
+	make
+	make install
+fi
+
+if [ -z "$(command -v cmake)" ]; then
+	printf '\e[1;31m%-6s\e[m\n' "Cannot install CMake, skip YCM"
+else
+	cd ~/.vim/bundle/YouCompleteMe
+	./install.py --clang-completer
+fi
+
+# install oh my zsh
+if [ -n "$(command -v curl)" ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+elif [ -n "$(command -v wget)" ]; then
+	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+fi
+
+if [ -f ~/.zshrc ]; then
+	mv ~/.zshrc ~/.zshrc.bak
+fi
+mv -f ~/.vim/configuration/.zshrc ~/.zshrc
+
+zsh
 
 printf '\e[1;34m%-6s\e[m\n' "Done"
