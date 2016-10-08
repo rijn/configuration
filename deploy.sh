@@ -122,6 +122,6 @@ if [ -f ~/.vimrc ]; then
 fi
 mv -f ~/.vim/configuration/vundle ~/.vimrc
 
-vim -c 'PluginInstall!' -c 'qa!'
+vim +PluginInstall +qall
 
 mv -f ~/.vim/configuration/.vimrc ~/.vimrc
