@@ -9,23 +9,24 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/NERDtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-airline'
 
-Bundle 'YankRing.vim'
+Plugin 'YankRing.vim'
 Plugin 'fugitive.vim'
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 
 Plugin 'honza/vim-snippets'
 Plugin 'kshenoy/vim-signature'
 Plugin 'majutsushi/tagbar'
 Plugin 'Lokaltog/vim-easymotion'
-Bundle 'scrooloose/syntastic'
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'nathanaelkane/vim-indent-guides'
-Bundle 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/matchit.zip'
 Plugin 'terryma/vim-expand-region'
 Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'tpope/vim-dispatch'
@@ -42,16 +43,15 @@ call vundle#end()            " required
 
 filetype plugin indent on    " required
 
+syntax on
 syntax enable
 set background=dark
-syntax on
-set guifont=Monaco\ 11
-colorscheme molokai
 set bg=dark
-"let g:molokai_original = 1
-"set guifont=Inconsolata-g\ for\ Powerline\ 11
-" colorscheme plum
-set t_Co=256
+set guifont=Monaco\ 11
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
+"set t_Co=256
 
 
 set relativenumber
