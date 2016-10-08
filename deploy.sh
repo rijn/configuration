@@ -125,3 +125,10 @@ mv -f ~/.vim/configuration/vundle ~/.vimrc
 vim +PluginInstall +qall
 
 mv -f ~/.vim/configuration/.vimrc ~/.vimrc
+mv -f ~/.vim/configuration/syntax ~/.vim/syntax
+mv -f ~/.vim/configuration/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py
+
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --clang-completer
+
+printf '\e[1;34m%-6s\e[m\n' "Done"
