@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/rijn/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -90,7 +90,7 @@ export HISTTIMEFORMAT="%m/%d/%y %T "
 eval "$(pyenv init -)"
 
 if [ -f ~/.zsh/zshalias ]; then
-    source ~/.zsh/zshalias
+    source ~/.zsh/alias
 else
     print "404: ~/.zsh/zshalias not found."
 fi

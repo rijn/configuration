@@ -1,0 +1,10 @@
+echo -e "\e[44mApplying alias...\e[49m"
+
+alias uiuc="cd ~/webroot/UIUC"
+alias vim="mvim -v"
+alias cs241="cd ~/webroot/UIUC/cs241"
+alias cs233="cd ~/webroot/UIUC/cs233"
+alias cs225="cd ~/webroot/UIUC/cs225"
+alias Monument="cd ~/webroot/Monument"
+alias uiucup="svn up ~/webroot/UIUC/*"
+alias cs241vm="ssh 'localadmin@fa16-cs241-323.cs.illinois.edu'"

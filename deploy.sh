@@ -83,10 +83,12 @@ echo "KERNEL: $KERNEL"
 echo "MACH: $MACH"
 echo "========"
 
+# fetch configuration
 echo "Fetching configuration"
 rm -rf ~/.vim/configuration
 git clone https://github.com/rijn/configuration ~/.vim/configuration
 
+# install dependencies
 deps=( "zsh" "toilet" "vim" "libpng" "cmake" "curl" "wget" )
 
 if [ "${OS}" == "mac" ]; then
@@ -100,7 +102,7 @@ if [ "${OS}" == "mac" ]; then
 	for i in "${deps[@]}"
 	do
 		if [ -z "$(brew ls | grep $i)" ]; then
-			echo "installing $i"
+			echo "Installing $i"
 			brew install $i
 		else
 			echo "$(brew ls --versions | grep $i) installed"
@@ -124,7 +126,7 @@ elif [ "${OS}" == "linux" ]; then
 fi
 
 
-
+# install Vundle
 if [ -d ~/.vim/bundle/Vundle.vim ]; then
 	echo "Vundle installed"
 else
@@ -139,10 +141,13 @@ mv -f ~/.vim/configuration/vundle ~/.vimrc
 
 vim +PluginInstall +qall
 
+# copy vimrc
 mv -f ~/.vim/configuration/.vimrc ~/.vimrc
-mv -f ~/.vim/configuration/syntax ~/.vim/syntax
+mkdir ~/.vim/syntax
+mv -f ~/.vim/configuration/syntax/* ~/.vim/syntax/
 mv -f ~/.vim/configuration/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py
 
+# install cmake
 if [ -z "$(command -v cmake)" ]; then
 	echo "Installing CMake"
 	cd ~/Downloads
@@ -157,11 +162,18 @@ if [ -z "$(command -v cmake)" ]; then
 	make install
 fi
 
-if [ -z "$(command -v cmake)" ]; then
-	printf '\e[1;31m%-6s\e[m\n' "Cannot install CMake, skip YCM"
+# compile YCM
+if [ -f ~/.vim/bundle/YouCompleteMe/installed ]; then
+	echo "YCM compiled"
 else
-	cd ~/.vim/bundle/YouCompleteMe
-	./install.py --clang-completer
+	echo "Compiling YCM"
+	if [ -z "$(command -v cmake)" ]; then
+		printf '\e[1;31m%-6s\e[m\n' "Cannot install CMake, skip YCM"
+	else
+		cd ~/.vim/bundle/YouCompleteMe
+		./install.py --clang-completer
+		cat 1 > ~/.vim/bundle/YouCompleteMe/installed
+	fi
 fi
 
 # install oh my zsh
@@ -171,10 +183,15 @@ elif [ -n "$(command -v wget)" ]; then
 	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 fi
 
+# move zshrc
 if [ -f ~/.zshrc ]; then
 	mv ~/.zshrc ~/.zshrc.bak
 fi
 mv -f ~/.vim/configuration/.zshrc ~/.zshrc
+
+mv -f ~/.vim/configuration/bullet-train.zsh-theme ~/.oh-my-zsh/themes/bullet-train.zsh-theme
+mkdir ~/.zsh
+mv -f ~/.vim/configuration/alias ~/.zsh/alias
 
 zsh
 
