@@ -83,6 +83,9 @@ echo "KERNEL: $KERNEL"
 echo "MACH: $MACH"
 echo "========"
 
+export PATH=$HOME/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/lib/:$LD_LIBRARY_PATH
+
 # fetch configuration
 echo "Fetching configuration"
 rm -rf ~/.vim/configuration
@@ -146,9 +149,6 @@ mv -f ~/.vim/configuration/.vimrc ~/.vimrc
 mkdir ~/.vim/syntax
 mv -f ~/.vim/configuration/syntax/* ~/.vim/syntax/
 mv -f ~/.vim/configuration/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py
-
-export PATH=$HOME/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/lib/:$LD_LIBRARY_PATH
 
 # install cmake
 if [ -z "$(command -v cmake)" ]; then
