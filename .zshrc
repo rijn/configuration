@@ -92,7 +92,7 @@ eval "$(pyenv init -)"
 if [ -f ~/.zsh/zshalias ]; then
     source ~/.zsh/alias
 else
-    print "404: ~/.zsh/zshalias not found."
+    print "404: ~/.zsh/alias not found."
 fi
 if [ -f ~/.zsh/dailystuff ]; then
     source ~/.zsh/dailystuff

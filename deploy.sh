@@ -178,11 +178,13 @@ else
 fi
 
 # install fonts
-echo "Installing fonts"
-mkdir -p /usr/share/fonts
-mv -f ~/.vim/configuration/Monaco_Linux-Powerline.ttf /usr/share/fonts/Monaco_Linux-Powerline.ttf
-mv -f ~/.vim/configuration/InputMono-Regular.ttf /usr/share/fonts/InputMono-Regular.ttf
-fc-cache -fv
+if [ "${OS}" == "linux" ]; then
+	echo "Installing fonts"
+	mkdir -p /usr/share/fonts
+	mv -f ~/.vim/configuration/Monaco_Linux-Powerline.ttf /usr/share/fonts/Monaco_Linux-Powerline.ttf
+	mv -f ~/.vim/configuration/InputMono-Regular.ttf /usr/share/fonts/InputMono-Regular.ttf
+	fc-cache -fv
+fi
 
 # move zshrc
 if [ -f ~/.zshrc ]; then
