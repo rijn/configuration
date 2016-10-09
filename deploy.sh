@@ -173,17 +173,21 @@ else
 	else
 		cd ~/.vim/bundle/YouCompleteMe
 		./install.py --clang-completer
-		cat 1 > ~/.vim/bundle/YouCompleteMe/installed
+		echo "$(OS)" > ~/.vim/bundle/YouCompleteMe/installed
 	fi
 fi
 
 # install fonts
 if [ "${OS}" == "linux" ]; then
 	echo "Installing fonts"
-	mkdir -p /usr/share/fonts
-	mv -f ~/.vim/configuration/Monaco_Linux-Powerline.ttf /usr/share/fonts/Monaco_Linux-Powerline.ttf
-	mv -f ~/.vim/configuration/InputMono-Regular.ttf /usr/share/fonts/InputMono-Regular.ttf
-	fc-cache -fv
+	if [ "$UID" -eq 0 ]; then
+		mkdir -p /usr/share/fonts
+		mv -f ~/.vim/configuration/Monaco_Linux-Powerline.ttf /usr/share/fonts/Monaco_Linux-Powerline.ttf
+		mv -f ~/.vim/configuration/InputMono-Regular.ttf /usr/share/fonts/InputMono-Regular.ttf
+		fc-cache -fv
+	else
+		printf '\e[1;31m%-6s\e[m\n' "Please run script in root, skip installation"
+	fi
 fi
 
 # move zshrc
