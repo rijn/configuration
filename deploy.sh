@@ -130,6 +130,8 @@ fi
 
 
 # install Vundle
+mkdir ~/history
+
 if [ -d ~/.vim/bundle/Vundle.vim ]; then
 	echo "Vundle installed"
 else

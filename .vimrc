@@ -88,7 +88,7 @@ let g:airline_theme = "molokai"
 let g:airline_powerline_fonts = 1
 
 """""YankRing""""
-let g:yankring_history_dir = '~/'
+let g:yankring_history_dir = '~/history'
 
 """"""YCM""""
 " make YCM compatible with UltiSnips (using supertab)

@@ -9,4 +9,4 @@ alias Monument="cd ~/webroot/Monument"
 alias uiucup="svn up ~/webroot/UIUC/*"
 alias cs241vm="ssh 'localadmin@fa16-cs241-323.cs.illinois.edu'"
 
-export PATH="/Users/rijn/stlink.git:/Users/rijn/gcc-arm-none-eabi/bin:PATH"
+export PATH="/Users/rijn/stlink.git:/Users/rijn/gcc-arm-none-eabi/bin:$PATH"
