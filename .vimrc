@@ -4,6 +4,9 @@ filetype off
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
+" Fix ycm bug
+let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
+
 " ===VUNDLE===
 call vundle#begin()
 
@@ -28,7 +31,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'terryma/vim-expand-region'
-Plugin 'OmniSharp/omnisharp-vim'
+" Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'git://git.wincent.com/command-t.git'
 
@@ -45,14 +48,22 @@ filetype plugin indent on    " required
 
 syntax on
 syntax enable
-set background=dark
-set bg=dark
-set guifont=Monaco\ 11
-let g:molokai_original = 1
-let g:rehash256 = 1
-colorscheme molokai
+
 "set t_Co=256
 
+if has('gui_running')
+    set background=dark
+    colorscheme solarized
+else
+    set background=dark
+    set bg=dark
+    let g:molokai_original = 1
+    let g:rehash256 = 1
+    colorscheme molokai
+endif
+
+" set guifont=Monaco\ 11
+set guifont=Input\ Mono:h11
 
 set relativenumber
 set number
@@ -84,11 +95,15 @@ map <C-J> :next <CR>
 map <C-K> :prev <CR>
 
 """""Airline""""
-let g:airline_theme = "molokai"
+if has('gui_running')
+    let g:airline_theme = "solarized"
+else
+    let g:airline_theme = "molokai"
+endif
 let g:airline_powerline_fonts = 1
 
 """""YankRing""""
-let g:yankring_history_dir = '~/history'
+let g:yankring_history_dir = '~/webroot'
 
 """"""YCM""""
 " make YCM compatible with UltiSnips (using supertab)
@@ -189,6 +204,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.p
 
 nmap <F8> :TagbarToggle<CR>
 nmap <F9> :YcmDiags<CR>
+
 noremap <F3> :ClangFormat<CR>
 
 " Clang format
