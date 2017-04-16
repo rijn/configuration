@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 
 export HISTTIMEFORMAT="%m/%d/%y %T "
 
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"
 
 if [ -f ~/.zsh/zshalias ]; then
     source ~/.zsh/alias
@@ -104,3 +104,9 @@ toilet -f mono9 -F gay -t HELLO RIJN.
 echo "Do not go gentle into that good night."
 echo "Rage, rage against the dying of the light."
 
+
+# added by travis gem
+[ -f /Users/rijn/.travis/travis.sh ] && source /Users/rijn/.travis/travis.sh
+
+# add z.sh
+. ~/.zsh/z.sh

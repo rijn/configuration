@@ -209,4 +209,10 @@ elif [ -n "$(command -v wget)" ]; then
 	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 fi
 
+# install z.sh
+mkdir ~/.zsh
+cd ~/.zsh
+curl -O https://raw.githubusercontent.com/rupa/z/master/z.sh
+chmod 755 z.sh
+
 printf '\e[1;34m%-6s\e[m\n' "Done"
