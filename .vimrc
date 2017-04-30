@@ -211,6 +211,7 @@ noremap <F3> :ClangFormat<CR>
 let g:clang_format#style_options = {
     \ "BasedOnStyle": "Google",
     \ "SpacesInParentheses": "true",
+    \ "IndentWidth": 4,
     \ "AlignConsecutiveAssignments": "true",
     \ "AlignConsecutiveDeclarations": "true",
     \ "AlignOperands": "true",
