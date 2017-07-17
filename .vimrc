@@ -41,6 +41,8 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'rhysd/vim-clang-format'
 
+Plugin 'airblade/vim-gitgutter'
+
 call vundle#end()            " required
 " ===END of VUNDLE===
 
@@ -51,16 +53,8 @@ syntax enable
 
 "set t_Co=256
 
-if has('gui_running')
-    set background=dark
-    colorscheme solarized
-else
-    set background=dark
-    set bg=dark
-    let g:molokai_original = 1
-    let g:rehash256 = 1
-    colorscheme molokai
-endif
+set background=dark
+colorscheme solarized
 
 " set guifont=Monaco\ 11
 set guifont=Input\ Mono:h11
@@ -221,4 +215,9 @@ let g:clang_format#style_options = {
     \ "AlignAfterOpenBracket": "Align"}
 
 nmap <F2> :!svn ci -m "commit from vim"<CR>
+
+" Git Gutter
+
+let g:gitgutter_realtime = 2000
+let g:gitgutter_eager = 2000
 
