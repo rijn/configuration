@@ -11,17 +11,15 @@ let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/NERDtree'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-airline'
-
 Plugin 'YankRing.vim'
 Plugin 'fugitive.vim'
 Plugin 'ervandew/supertab'
-
 Plugin 'honza/vim-snippets'
 Plugin 'kshenoy/vim-signature'
 Plugin 'majutsushi/tagbar'
@@ -34,14 +32,13 @@ Plugin 'terryma/vim-expand-region'
 " Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'git://git.wincent.com/command-t.git'
-
 Plugin 'rizzatti/dash.vim'
 " let g:formatdef_clangformat = '~/.vim/bundle/vim-autoformat/.clang-format'
 " let g:formatterpath = ['~/.vim/bundle/vim-autoformat']
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'rhysd/vim-clang-format'
-
 Plugin 'airblade/vim-gitgutter'
+Plugin 'pangloss/vim-javascript'
 
 call vundle#end()            " required
 " ===END of VUNDLE===
@@ -70,7 +67,7 @@ set tabstop=4
 set expandtab
 set backspace=indent,eol,start
 set encoding=utf-8
-set colorcolumn=80
+set colorcolumn=80,100,120
 set cursorline
 set cursorcolumn
 set incsearch
@@ -220,4 +217,8 @@ nmap <F2> :!svn ci -m "commit from vim"<CR>
 
 let g:gitgutter_realtime = 2000
 let g:gitgutter_eager = 2000
+
+" vim-javascript
+
+let g:javascript_plugin_jsdoc = 1
 
