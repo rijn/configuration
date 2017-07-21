@@ -11,21 +11,24 @@ let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'majutsushi/tagbar'
+
 Plugin 'YankRing.vim'
-Plugin 'fugitive.vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
 Plugin 'kshenoy/vim-signature'
-Plugin 'majutsushi/tagbar'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'terryma/vim-expand-region'
@@ -33,12 +36,12 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-dispatch'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rizzatti/dash.vim'
-" let g:formatdef_clangformat = '~/.vim/bundle/vim-autoformat/.clang-format'
-" let g:formatterpath = ['~/.vim/bundle/vim-autoformat']
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'rhysd/vim-clang-format'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
+
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'rhysd/vim-clang-format'
 
 call vundle#end()            " required
 " ===END of VUNDLE===
