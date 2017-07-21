@@ -28,7 +28,7 @@ Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
 Plugin 'kshenoy/vim-signature'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'terryma/vim-expand-region'
@@ -117,14 +117,15 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 """""Syntastic""""
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height= 5
+" let g:syntastic_loc_list_height= 5
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_pylint_post_args = "--disable=W1234"
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_post_args = '--disable=W1234'
 
 """""FORCE UltiSnip to USE PY2""""
 let g:UltiSnipsUsePythonVersion = 2
