@@ -38,10 +38,14 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rizzatti/dash.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
+Plugin 'groenewege/vim-less'
+Plugin 'posva/vim-vue'
+Plugin 'chemzqm/wxapp.vim'
 
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'neomake/neomake'
 
 call vundle#end()            " required
 " ===END of VUNDLE===
@@ -126,6 +130,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_post_args = '--disable=W1234'
+
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 
 """""FORCE UltiSnip to USE PY2""""
 let g:UltiSnipsUsePythonVersion = 2
@@ -226,3 +233,11 @@ let g:gitgutter_eager = 2000
 
 let g:javascript_plugin_jsdoc = 1
 
+" vim-vue
+
+let g:vue_disable_pre_processors=1
+
+" wxapp
+
+let g:neomake_wxml_enabled_makers = ['tidy']
+au BufNewFile,BufRead *.wpy set filetype=vue
